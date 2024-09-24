@@ -5,6 +5,8 @@ import { FeaturesGrid } from "../sections/FeaturesGrid";
 import { HeaderSection } from "../sections/Header";
 import { HeroSection } from "../sections/Hero";
 import { LatestPosts } from "../sections/LatestPosts";
+import { Testimonials } from "../sections/Testimonials";
+import { CallToActionSection } from "../sections/CallToAction";
 import { getCollection } from "astro:content";
 
 // construct posts and set it to contain the fetching of the collection 'blog'
@@ -21,4 +23,6 @@ const latestPosts = posts.sort((a, b) => {
   <FeaturesCards />
   <FeaturesGrid />
   <LatestPosts latestPosts={latestPosts} />
+  <Testimonials />
+  <CallToActionSection />
 </DefaultLayout>
