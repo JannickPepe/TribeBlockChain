@@ -7,7 +7,9 @@ import { HeroSection } from "../sections/Hero";
 import { LatestPosts } from "../sections/LatestPosts";
 import { Testimonials } from "../sections/Testimonials";
 import { CallToActionSection } from "../sections/CallToAction";
+import { FooterSection } from "../sections/Footer";
 import { getCollection } from "astro:content";
+
 
 // construct posts and set it to contain the fetching of the collection 'blog'
 const posts = await getCollection('blog');
@@ -25,4 +27,5 @@ const latestPosts = posts.sort((a, b) => {
   <LatestPosts latestPosts={latestPosts} />
   <Testimonials />
   <CallToActionSection />
+  <FooterSection />
 </DefaultLayout>
