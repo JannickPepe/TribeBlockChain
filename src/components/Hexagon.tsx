@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type ComponentPropsWithoutRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type ComponentPropsWithoutRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { motion } from "framer-motion";
 
@@ -14,7 +14,7 @@ export const Hexagon = (props: ComponentPropsWithoutRef<'svg'> & { size?: number
     const [totalPathLength, setTotalPathLength] = useState<number>();
 
     // Get measurement of the path so we can add that to our Ref
-    useLayoutEffect(() => {
+    useEffect(() => {
         const pathLength = pathRef.current?.getTotalLength();
         if (!pathLength) return;
         const scalePathLength = (pathLength * size) / 82;

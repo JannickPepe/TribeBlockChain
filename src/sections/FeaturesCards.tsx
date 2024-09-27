@@ -64,6 +64,7 @@ export const FeaturesCards = () => {
                                 style={{transform: `translateX(calc((-100% - 2rem) * ${selectedCardIndex}))`,}}
                                 onMouseEnter={() => setIsHovered(true)}
                                 onMouseLeave={() => setIsHovered(false)}
+                                key={title}
                             >
                                 <Card className="max-w-xs md:max-w-md" key={title} color={color}>
                                     <div className="flex justify-center -mt-28">
