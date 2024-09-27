@@ -22,10 +22,10 @@ const latestPosts = posts.sort((a, b) => {
 <DefaultLayout>
   <HeaderSection />
   <HeroSection client:load />
-  <FeaturesCards />
-  <FeaturesGrid />
-  <LatestPosts latestPosts={latestPosts} />
-  <Testimonials />
-  <CallToActionSection />
+  <FeaturesCards client:load />
+  <FeaturesGrid client:load />
+  <LatestPosts latestPosts={latestPosts} client:load />
+  <Testimonials client:load />
+  <CallToActionSection client:load />
   <FooterSection />
 </DefaultLayout>
