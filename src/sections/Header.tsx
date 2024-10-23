@@ -47,10 +47,10 @@ export const HeaderSection = () => {
                         <div className="flex items-center gap-4">
                             <CutCornerButton className="hidden md:inline-flex">Get Started</CutCornerButton>
                             <div className="size-10 relative" onClick={() => setIsOpen((curr) => !curr )}>
-                                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
                                     <div className={twMerge("bg-zinc-300 w-5 h-0.5 -translate-y-1 transition-all duration-500", isOpen && 'translate-y-0 rotate-45')}></div>
                                 </div>
-                                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
                                     <div className={twMerge("bg-zinc-300 w-5 h-0.5 translate-y-1 transition-all duration-500", isOpen && 'translate-y-0 -rotate-45')}></div>
                                 </div>
                             </div>
