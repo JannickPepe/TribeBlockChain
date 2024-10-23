@@ -52,7 +52,7 @@ const socialIcons = [
 export const FooterSection = () => {
 
     return (
-        <footer className="py-16 bg-zinc-950">
+        <footer className="py-16 bg-zinc-950 px-2 md:px-0">
             <div className="container">
                 <div className="flex justify-between items-center">
                     <div>
@@ -68,7 +68,7 @@ export const FooterSection = () => {
 
                 <div className="mt-12 md:mt-48 md:flex justify-between items-center">
                     <p className="text-zinc-400">
-                        &copy; 2024 BlockForge. All rights reserved
+                        &copy; 2024 BlockSmith. All rights reserved
                     </p>
                     <div className="mt-4 md:mt-0 flex gap-6">
                         {socialIcons.map((icon, iconIndex) => (

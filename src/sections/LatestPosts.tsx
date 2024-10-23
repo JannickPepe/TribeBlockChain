@@ -21,7 +21,7 @@ export const LatestPosts = (props: { latestPosts: CollectionEntry<'blog'>[] }) =
     const marginTop = useTransform(scrollYProgress, [0, 1], [0, 64]);
 
     return (
-        <section className="py-60">
+        <section className="py-20 md:py-32 lg:py-60">
             <div className="container">
 
                 <div className="max-w-3xl mx-auto">
@@ -81,7 +81,7 @@ export const LatestPosts = (props: { latestPosts: CollectionEntry<'blog'>[] }) =
                     </motion.div>
                 </div>
 
-                <div className="flex justify-center mt-48 md:mt-32">
+                <div className="flex justify-center mt-24 md:mt-32">
                     <CutCornerButton>Read the Blog</CutCornerButton>
                 </div>
             </div>

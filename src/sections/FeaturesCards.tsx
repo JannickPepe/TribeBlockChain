@@ -52,8 +52,8 @@ export const FeaturesCards = () => {
     return (
         <section className="py-24 overflow-x-clip md:-mt-28">
             <div className="container">
-                <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center">
-                    Discover the feature of BlockChain with BlockForge
+                <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center px-2 md:px-0">
+                    Discover the feature of BlockChain with BlockSmith
                 </h2>
 
                 <div className="mt-36 lg:mt-48 flex">

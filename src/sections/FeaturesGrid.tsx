@@ -56,12 +56,12 @@ export const FeaturesGrid = () => {
                 <div className="flex flex-col gap-56 md:gap-48 lg:gap-80">
                     {/* LEFT SIDE CONTENT */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="col-span-2">
+                        <div className="col-span-2 px-2 md:px-0">
                             <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl">
                                 Empowering the future of BlockChain
                             </h2>
                             <p className="text-xl lg:text-2xl text-zinc-400 mt-8">
-                                BlockForge provides robust and secure infrastructur to support the next generation of decentralized applications
+                                BlockSmith provides robust and secure infrastructur to support the next generation of decentralized applications
                             </p>
                             <ul className="flex flex-col gap-8 mt-12">
                                 {listItems.map((item) => (
@@ -129,16 +129,16 @@ export const FeaturesGrid = () => {
                                 />
                             </div>
                         </div>
-                        <div className="col-span-2">
+                        <div className="col-span-2 px-2 md:px-0">
                             <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl">
-                                BlockForge leads the way
+                                BlockSmith leads the way
                             </h2>
                             <div className="flex flex-col text-xl lg:text-2xl text-zinc-400 mt-6 gap-6">
                                 <p>
-                                    BlockForge is dedicated to support the evolution of Web3 applications by delivering the necessary infrastructure and secuirty for Web3
+                                    BlockSmith is dedicated to support the evolution of Web3 applications by delivering the necessary infrastructure and secuirty for Web3
                                 </p>
                                 <p>
-                                    BlockForge champions Web3 for everyone. As a decentralized BlockChain scaling platform, BlockForge enables developers to create scable user-friendly Apps with transaction cost ensuring robust security.
+                                    BlockSmith champions Web3 for everyone. As a decentralized BlockChain scaling platform, BlockSmith enables developers to create scable user-friendly Apps with transaction cost ensuring robust security.
                                 </p>
                             </div>
                             <div className="flex gap-8 mt-12 items-center justify-center lg:justify-start lg:pr-2">

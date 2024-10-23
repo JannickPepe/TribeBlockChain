@@ -38,12 +38,14 @@ export const HeaderSection = () => {
 
     return (
         <>
-            <header className="sticky top-0 bg-zinc-900/50 backdrop-blur-lg z-40">
+            <header className="sticky top-0 bg-zinc-900/50 backdrop-blur-lg z-40 px-2 md:px-0">
                 <div className="container">
                     <div className="flex justify-between items-center h-24 md:h-28">
-                        <div>
-                            <img src="/assets/images/logo.svg" alt="BlockForge Logo" />
-                        </div>
+                        <a href="/">
+                            <h1 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-fuchsia-500 p-4">
+                                BlockSmith
+                            </h1>
+                        </a>
                         <div className="flex items-center gap-4">
                             <CutCornerButton className="hidden md:inline-flex">Get Started</CutCornerButton>
                             <div className="size-10 relative" onClick={() => setIsOpen((curr) => !curr )}>

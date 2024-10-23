@@ -57,7 +57,7 @@ export const CallToActionSection = () => {
                     <h2 className="font-heading font-black text-4xl md:text-5xl lg:text-6xl text-center">
                         Ready to <span className="block">get started?</span>
                     </h2>
-                    <p className="text-xl lg:text-2xl text-zinc-400 text-center mt-8 max-w-sm mx-auto">Start building, using BlockChain technology, with BlockForge</p>
+                    <p className="text-xl lg:text-2xl text-zinc-400 text-center mt-8 max-w-sm mx-auto">Start building, using BlockChain technology, with BlockSmith</p>
 
                     <div className="flex justify-center mt-12">
                         <CutCornerButton>Get Started</CutCornerButton>
