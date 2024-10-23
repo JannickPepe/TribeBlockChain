@@ -59,10 +59,10 @@ export const FooterSection = () => {
                         <img src={logoImg.src} alt="logo img" />
                     </div>
                     <nav className="hidden md:flex gap-12 text-zinc-500 font-heading font-black">
-                        <a href="#" className="hover:text-fuchsia-500 transition-colors hover:underline hover:underline-offset-2">Home</a>
-                        <a href="#" className="hover:text-fuchsia-500 transition-colors hover:underline hover:underline-offset-2">Blog</a>
-                        <a href="#" className="hover:text-fuchsia-500 transition-colors hover:underline hover:underline-offset-2">Careers</a>
-                        <a href="#" className="hover:text-fuchsia-500 transition-colors hover:underline hover:underline-offset-2">Contact</a>
+                        <a href="/" className="hover:text-fuchsia-500 transition-colors hover:underline hover:underline-offset-2">Home</a>
+                        <a href="/blog" className="hover:text-fuchsia-500 transition-colors hover:underline hover:underline-offset-2">Blog</a>
+                        <a href="/careers" className="hover:text-fuchsia-500 transition-colors hover:underline hover:underline-offset-2">Careers</a>
+                        <a href="/contact" className="hover:text-fuchsia-500 transition-colors hover:underline hover:underline-offset-2">Contact</a>
                     </nav>
                 </div>
 
