@@ -9,7 +9,7 @@ import { getCollection } from "astro:content";
 
 // construct posts and set it to contain the fetching of the collection 'blog'
 const posts = await getCollection('blog');
-const latestPosts = posts.sort((a: { data: { pubDate: number; }; }, b: { data: { pubDate: number; }; }) => {
+const latestPosts = posts.sort((a, b) => {
   if (a.data.pubDate.valueOf() === b.data.pubDate.valueOf()) return 0; 
   return a.data.pubDate.valueOf() > b.data.pubDate.valueOf() ? -1 : 1;
 }).slice(0, 4);
