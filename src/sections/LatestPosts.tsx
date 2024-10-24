@@ -21,7 +21,7 @@ export const LatestPosts = (props: { latestPosts: CollectionEntry<'blog'>[] }) =
     const marginTop = useTransform(scrollYProgress, [0, 1], [0, 64]);
 
     return (
-        <section className="py-20 md:py-32 lg:py-60">
+        <section className="py-20 md:py-32 lg:py-60 px-2 md:px-0">
             <div className="container">
 
                 <div className="max-w-3xl mx-auto">

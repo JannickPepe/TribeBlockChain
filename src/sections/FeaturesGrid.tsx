@@ -51,7 +51,7 @@ export const FeaturesGrid = () => {
 
 
     return (
-        <section className="py-24 overflow-x-clip">
+        <section className="py-24 overflow-x-clip px-2 md:px-0">
             <div className="container">
                 <div className="flex flex-col gap-56 md:gap-48 lg:gap-80">
                     {/* LEFT SIDE CONTENT */}

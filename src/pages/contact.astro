@@ -28,8 +28,8 @@ const comments = await db.select().from(Comment);
     </InterierHero>
 
     <InteriorContent>
-        <div class="max-w-xl mx-auto">
-            <h2 class="font-heading font-black text-3xl">What can we help you with</h2>
+        <div class="max-w-xl mx-auto px-4 md:px-0">
+            <h2 class="font-heading font-black text-3xl text-center">What can we help you with</h2>
             <form class="flex flex-col mt-8" name="contact" method="POST" data-netlify="true"> 
                 <label for="name">Name</label>
                 <Input type="text" name="name" id="id" className="mt-1" />
@@ -43,19 +43,20 @@ const comments = await db.select().from(Comment);
                 <CutCornerButton className='mt-4'>Send Message</CutCornerButton>
             </form>
 
-            <div class="grid grid-cols-1 mt-14 md:mt-24 lg:mt-32 mx-auto">
-                <div class="text-center font-bold text-xl md:text-2xl lg:text-4xl">
+            <div class="grid grid-cols-1 mt-14 md:mt-24 lg:mt-32 mx-auto ">
+                <div class="text-center font-bold text-2xl md:text-3xl lg:text-4xl">
                     <h2>FAQ</h2>
                 </div>
-                <div class="mx-auto w-full mt-6 space-y-2">
-                    {
-                        comments.map(({ author, body }) => (
+                <div class="mx-auto w-full mt-6 space-y-4">
+                    {comments.map(({ author, body }) => (
                         <article class="border-2 border-fuchsia-800/70 p-3 rounded-md hover:scale-110 transition group">
                             <p class="text-xl font-semibold text-fuchsia-500 ml-4">{author}</p>
-                            <p class="font-semibold mt-2 ml-2 flex gap-1 items-center"><MdOutlineKeyboardArrowRight className='size-6 group-hover:rotate-45 transition-transform' /> {body}</p>
+                            <p class="font-semibold mt-2 ml-2 flex gap-1 items-center">
+                                <MdOutlineKeyboardArrowRight className='size-6 group-hover:rotate-45 transition-transform' /> 
+                                {body}
+                            </p>
                         </article>
-                        ))
-                    }
+                    ))}
                 </div>
             </div> 
             

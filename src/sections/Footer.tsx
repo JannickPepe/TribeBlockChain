@@ -58,7 +58,7 @@ const socialIcons = [
 export const FooterSection = () => {
 
     return (
-        <footer className="py-12 bg-zinc-950 px-2 md:px-0">
+        <footer className="py-12 bg-zinc-950 px-4 md:px-0">
             <div className="container">
                 <div className="flex justify-between items-center">
                     <a href="/">
