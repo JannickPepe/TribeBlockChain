@@ -1,10 +1,16 @@
 ---
+import { db, Comment } from 'astro:db';
 import { CutCornerButton } from '../components/CutCornerButton';
 import Input from '../components/Input.astro';
 import TextArea from '../components/TextArea.astro';
 import InterierHero from '../components/InterierHero.astro';
 import InteriorContent from '../components/InteriorContent.astro';
 import DefaultLayout from '../layouts/Default.astro';
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+
+
+// Render the new list of comments on each request
+const comments = await db.select().from(Comment);
 
 ---
 
@@ -36,6 +42,23 @@ import DefaultLayout from '../layouts/Default.astro';
 
                 <CutCornerButton className='mt-4'>Send Message</CutCornerButton>
             </form>
+
+            <div class="grid grid-cols-1 mt-14 md:mt-24 lg:mt-32 mx-auto">
+                <div class="text-center font-bold text-xl md:text-2xl lg:text-4xl">
+                    <h2>FAQ</h2>
+                </div>
+                <div class="mx-auto w-full mt-6 space-y-2">
+                    {
+                        comments.map(({ author, body }) => (
+                        <article class="border-2 border-fuchsia-800/70 p-3 rounded-md hover:scale-110 transition group">
+                            <p class="text-xl font-semibold text-fuchsia-500 ml-4">{author}</p>
+                            <p class="font-semibold mt-2 ml-2 flex gap-1 items-center"><MdOutlineKeyboardArrowRight className='size-6 group-hover:rotate-45 transition-transform' /> {body}</p>
+                        </article>
+                        ))
+                    }
+                </div>
+            </div> 
+            
         </div>
     </InteriorContent>
 </DefaultLayout>

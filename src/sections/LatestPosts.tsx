@@ -33,23 +33,25 @@ export const LatestPosts = (props: { latestPosts: CollectionEntry<'blog'>[] }) =
             
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 md:mt-28">
                     <div className="flex flex-col gap-8">
-                        {latestPosts.map(({ data: { title, description, category } }, postIndex) => (
-                            <Card 
-                                key={postIndex} 
-                                color={getPostColorFromCategory(category)} 
-                                buttonText="Read More"
-                                className={twMerge((postIndex === 1 || postIndex === 3) && "md:hidden")}
-                            >
-                                <Tag color={getPostColorFromCategory(category)}>
-                                    {category}
-                                </Tag>
-                                <h3 className="font-heading font-black text-3xl mt-3">
-                                    {title}
-                                </h3>
-                                <p className="text-lg text-zinc-400 mt-6">
-                                    {description}
-                                </p>
-                            </Card>
+                        {latestPosts.map(({ data: { title, description, category }, slug }, postIndex) => (
+                            <a href={`/blog/${slug}`} >
+                                <Card 
+                                    key={postIndex} 
+                                    color={getPostColorFromCategory(category)} 
+                                    buttonText="Read More"
+                                    className={twMerge((postIndex === 1 || postIndex === 3) && "md:hidden")}
+                                >
+                                    <Tag color={getPostColorFromCategory(category)}>
+                                        {category}
+                                    </Tag>
+                                    <h3 className="font-heading font-black text-3xl mt-3">
+                                        {title}
+                                    </h3>
+                                    <p className="text-lg text-zinc-400 mt-6">
+                                        {description}
+                                    </p>
+                                </Card>
+                            </a>
                         ))}
                     </div>
 
@@ -60,29 +62,33 @@ export const LatestPosts = (props: { latestPosts: CollectionEntry<'blog'>[] }) =
                         }}
                         ref={targetRef}
                     >
-                        {latestPosts.map(({ data: { title, description, category } }, postIndex) => (
-                            <Card 
-                                key={postIndex} 
-                                color={getPostColorFromCategory(category)} 
-                                buttonText="Read More"
-                                className={twMerge((postIndex === 0 || postIndex ===2 ) && "md:hidden")}
-                            >
-                                <Tag color={getPostColorFromCategory(category)}>
-                                    {category}
-                                </Tag>
-                                <h3 className="font-heading font-black text-3xl mt-3">
-                                    {title}
-                                </h3>
-                                <p className="text-lg text-zinc-400 mt-6">
-                                    {description}
-                                </p>
-                            </Card>
+                        {latestPosts.map(({ data: { title, description, category }, slug }, postIndex) => (
+                            <a href={`/blog/${slug}`}>
+                                <Card 
+                                    key={postIndex} 
+                                    color={getPostColorFromCategory(category)} 
+                                    buttonText="Read More"
+                                    className={twMerge((postIndex === 0 || postIndex ===2 ) && "md:hidden")}
+                                >
+                                    <Tag color={getPostColorFromCategory(category)}>
+                                        {category}
+                                    </Tag>
+                                    <h3 className="font-heading font-black text-3xl mt-3">
+                                        {title}
+                                    </h3>
+                                    <p className="text-lg text-zinc-400 mt-6">
+                                        {description}
+                                    </p>
+                                </Card>
+                            </a>
                         ))}
                     </motion.div>
                 </div>
 
                 <div className="flex justify-center mt-24 md:mt-32">
-                    <CutCornerButton>Read the Blog</CutCornerButton>
+                    <a href="/blog">
+                        <CutCornerButton>Read the Blog</CutCornerButton>
+                    </a>
                 </div>
             </div>
         </section>
