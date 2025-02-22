@@ -1,0 +1,19 @@
+---
+---
+
+<div class="card p-8 bg-neutral-300">
+    <div class="flex items-center gap-2 pb-4">
+        {/*@ts-ignore*/}
+        <img src={img.user.image} class="avatar w-8 rounded-full" />
+        {/*@ts-ignore*/}
+        <a href={`profile/${img.user.id}`}>
+            {/*@ts-ignore*/}
+            <p>{img.user.name}</p>
+        </a>
+
+        <p class="text-xs ml-auto">
+            {/*@ts-ignore*/}
+            {new Date(img.createdAt!).toLocaleString()}
+        </p>
+    </div>
+</div>
