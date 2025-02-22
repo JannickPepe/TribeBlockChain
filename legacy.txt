@@ -5,3 +5,8 @@
         ))}
     </div>
 </div>
+
+
+ adapter: node({
+    mode: 'standalone',
+  }),
