@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react"
-import { CutCornerButton } from "../components/CutCornerButton"
-import { Hexagon } from "../components/Hexagon"
-import { twMerge } from "tailwind-merge"
-import { AnimatePresence, motion } from "framer-motion"
+import { useEffect, useState } from "react";
+import { CutCornerButton } from "../components/CutCornerButton";
+import { Hexagon } from "../components/Hexagon";
+import { twMerge } from "tailwind-merge";
+import { AnimatePresence, motion } from "framer-motion";
+import type { Session, User } from "better-auth";
+import type { AstroClientDirectives } from "astro";
+import GithubSignIn from "../components/github-login";
+import SignOut from "../components/sign-out";
 
 const navLinks = [
     {
@@ -23,7 +27,14 @@ const navLinks = [
     },
 ]
 
-export const HeaderSection = () => {
+type NavProps = {
+    sesh: {
+        session: Session;
+        user: User;
+    } | null
+} & AstroClientDirectives
+
+export const HeaderSection = ({sesh}: NavProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -48,6 +59,20 @@ export const HeaderSection = () => {
                         </a>
                         <div className="flex items-center gap-4">
                             <CutCornerButton className="hidden md:inline-flex">Get Started</CutCornerButton>
+                            {!sesh ? <GithubSignIn/> : null}
+                            {sesh ? (
+                                <div className="flex items-center gap-4">
+                                    <div>
+                                        <a href="dashboard">
+                                            <img className="size-14 rounded-full" src={sesh.user.image!} />
+                                        </a>
+                                    </div>
+
+                                    <div>
+                                        <SignOut />
+                                    </div>
+                                </div>
+                            ) : null}
                             <div className="size-10 relative" onClick={() => setIsOpen((curr) => !curr )}>
                                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
                                     <div className={twMerge("bg-zinc-300 w-5 h-0.5 -translate-y-1 transition-all duration-500", isOpen && 'translate-y-0 rotate-45')}></div>

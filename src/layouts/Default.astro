@@ -3,7 +3,12 @@ import { CallToActionSection } from "../sections/CallToAction";
 import { FooterSection } from "../sections/Footer";
 import { HeaderSection } from "../sections/Header";
 import { Testimonials } from "../sections/Testimonials";
+import { auth } from "../lib/auth"
 import "../styles/global.css";
+
+const session = await auth.api.getSession({
+  headers: Astro.request.headers
+})
 ---
 
 <!doctype html>
@@ -20,7 +25,7 @@ import "../styles/global.css";
     />
   </head>
   <body>
-    <HeaderSection client:load />
+    <HeaderSection sesh={session} client:load />
     <slot />
     <Testimonials client:load />
     <CallToActionSection client:load />

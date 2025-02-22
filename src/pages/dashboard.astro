@@ -1,0 +1,53 @@
+---
+import { db } from "../db";
+import Layout from "../layouts/Default.astro";
+import { CldUploadWidget } from "astro-cloudinary";
+import { MdCloudUpload } from "react-icons/md";
+
+const currentUser = Astro.locals.user;
+---
+
+<Layout>
+    <main class="flex justify-center">
+        <section class="">
+            <img src={currentUser?.image} class="size-28 rounded-full pb-2 mx-auto" />
+            <h1 class="text-4xl text-center brightness-150 font-bold">Your Dashbaord</h1>
+            <p class="text-2xl text-center">View, delete and check your liked posts</p>
+            
+            <CldUploadWidget uploadPreset="astro" id="upload-events" signatureEndpoint={'/api/signed'} class="justify-center flex">
+                <button class="bg-teal-500 px-3 py-2 text-black uppercase rounded-lg my-4">
+                    <div class="flex items-center gap-2">
+                        <p>Upload</p>
+                        <MdCloudUpload className="size-6" />
+                    </div>
+                </button>
+            </CldUploadWidget>
+        </section>
+    </main>
+</Layout>
+
+<script>
+    import { actions } from 'astro:actions';
+
+    const widget = document.querySelector("#upload-events");
+
+    if(widget) {
+        widget.addEventListener('clduploadwidget:success', async (e) => {
+            //@ts-ignore
+            const imageUrl = e.detail.info.public_id as string;
+            //@ts-ignore
+            const format = e.detail.info.format as string;
+            
+            const { data, error } = await actions.addImage({
+                format, publicId: imageUrl,
+            })
+            if (error) {
+                console.error(error);
+            }
+            if (data) {
+                console.log(data);
+                window.location.href = "/dashboard";
+            }
+        })
+    }
+</script>
