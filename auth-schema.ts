@@ -73,14 +73,14 @@ export const comment = pgTable("comment", {
 	createdAt: timestamp('created_at').defaultNow(),
 });
 
-export const userRelationship = relations(user, ({ many }) => ({
+export const userRelations = relations(user, ({ many }) => ({
 	images: many(userImage),
 	likes: many(imageLike),
 	comments: many(comment),
 }));
 
 export const userImageRelations = relations(userImage, ({ one, many }) => ({ 
-	image: one(user, {
+	user: one(user, {
 		fields: [userImage.userId],
 		references: [user.id],
 	}),

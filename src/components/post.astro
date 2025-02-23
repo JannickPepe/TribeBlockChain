@@ -1,19 +1,75 @@
 ---
+import type { AstroClientDirectives } from "astro";
+import type { User } from "better-auth";
+import type { TImagePost } from "../lib/infer-types";
+import { CldImage } from "astro-cloudinary";
+import { getCldVideoUrl, getCldImageUrl } from "astro-cloudinary/helpers";
+
+type Props = {
+    currentUser: User | null;
+    imgData: TImagePost
+} & AstroClientDirectives
+
+const {currentUser, imgData: img} = Astro.props;
+
+const cldVideoPreview = getCldVideoUrl({ 
+    src: img.url, 
+    rawTransformations: "e_preview"
+});
+
 ---
 
-<div class="card p-8 bg-neutral-300">
-    <div class="flex items-center gap-2 pb-4">
-        {/*@ts-ignore*/}
+<div class="card p-8">
+    <div class="flex items-center gap-2 pb-4 bg-neutral-800 p-4 rounded-tl-lg rounded-tr-lg">
         <img src={img.user.image} class="avatar w-8 rounded-full" />
-        {/*@ts-ignore*/}
         <a href={`profile/${img.user.id}`}>
-            {/*@ts-ignore*/}
             <p>{img.user.name}</p>
         </a>
-
         <p class="text-xs ml-auto">
-            {/*@ts-ignore*/}
             {new Date(img.createdAt!).toLocaleString()}
         </p>
     </div>
+
+    <div class="relative h-[300px] bg-neutral-800 group flex justify-center items-center rounded-bl-lg rounded-br-lg overflow-hidden">
+        <div aria-hidden class="absolute left-0 top-0 h-full w-full bg-black z-10 opacity-0 group-hover:opacity-40 pointer-events-none transition-opacity" />
+        <a 
+            class="absolute top-1/2 left-1/2 pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 transition transform -translate-x-1/2 -translate-y-1/2 z-20 hover:text-white text-2xl font-bold" 
+            href={`post/${img.id}`}
+        >
+            View Post
+        </a>
+        {
+            img.format === "mp4" ? (
+                <video class="video-preview w-full h-fit" src={cldVideoPreview} />
+            ) : (
+                <CldImage 
+                    src={getCldImageUrl({ src: img.url })}
+                    alt={img.description}
+                    class={""}
+                />
+            )
+        }
+    </div>
 </div>
+
+<script>
+    (function () {
+        const videos = document.querySelectorAll('.video-preview') as NodeListOf<HTMLVideoElement>;
+
+        if(!videos) return;
+
+        videos.forEach((video) => {
+            video.addEventListener("ended", (event) => {
+                video.currentTime = 0;
+                video.play();
+            });
+            video.addEventListener("mouseover", function() {
+                video.play();
+            });
+            video.addEventListener("mouseout", function () {
+                video.pause();
+            });
+        })
+
+    })();
+</script>

@@ -25,3 +25,8 @@ export type InferResultType<
         with: With;
     }
 >;
+
+export type TImagePost = InferResultType<
+    "userImage", 
+    { user: true; likes: true; comments: true }
+>;

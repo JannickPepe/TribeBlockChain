@@ -1,14 +1,22 @@
 ---
+import { eq } from "drizzle-orm";
 import { db } from "../db";
 import Layout from "../layouts/Default.astro";
 import { CldUploadWidget } from "astro-cloudinary";
 import { MdCloudUpload } from "react-icons/md";
+import { userImage } from "../../auth-schema";
+import Post from "../components/post.astro";
 
 const currentUser = Astro.locals.user;
+
+const images = await db.query.userImage.findMany({
+    where: eq(userImage.userId, currentUser?.id!),
+    with: {likes: true, user: true, comments: true}
+})
 ---
 
 <Layout>
-    <main class="flex justify-center">
+    <main class="py-10">
         <section class="">
             <img src={currentUser?.image} class="size-28 rounded-full pb-2 mx-auto" />
             <h1 class="text-4xl text-center brightness-150 font-bold">Your Dashbaord</h1>
@@ -24,8 +32,13 @@ const currentUser = Astro.locals.user;
             </CldUploadWidget>
         </section>
         
-        <section class="card">
-            <h2 class="pb text-3xl">My posts</h2>
+        <section class="card mt-8">
+            <h2 class="pb text-3xl text-center">My posts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {images.length === 0 ? (<p>You have no posts</p>): images.map((post) =>
+                    <Post imgData={post} currentUser={currentUser} />
+                )}
+            </div>
         </section>
     </main>
 </Layout>
