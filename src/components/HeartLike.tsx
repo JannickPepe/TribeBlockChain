@@ -19,9 +19,8 @@ function HeartLike({ currentUser, imgData }: ImagePostProps) {
         const alreadyLiked = likes.some((like) => like.userId === currentUser.id);
         const optimisticLike = alreadyLiked 
         ? likes.filter((like) => like.userId !== currentUser.id) 
-        : [...likes, { userId: currentUser.id, imageId: imgData.id }];
+        : [...likes, { id: '', createdAt: null, userId: currentUser.id, imageId: imgData.id }];
 
-        //@ts-ignore
         setLikes(optimisticLike);
 
         try {
