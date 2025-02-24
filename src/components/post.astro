@@ -4,6 +4,7 @@ import type { User } from "better-auth";
 import type { TImagePost } from "../lib/infer-types";
 import { CldImage } from "astro-cloudinary";
 import { getCldVideoUrl, getCldImageUrl } from "astro-cloudinary/helpers";
+import HeartLike from "./HeartLike";
 
 type Props = {
     currentUser: User | null;
@@ -30,7 +31,7 @@ const cldVideoPreview = getCldVideoUrl({
         </p>
     </div>
 
-    <div class="relative h-[300px] bg-neutral-800 group flex justify-center items-center rounded-bl-lg rounded-br-lg overflow-hidden">
+    <div class="relative h-[300px] bg-neutral-800 group flex justify-center items-center overflow-hidden">
         <div aria-hidden class="absolute left-0 top-0 h-full w-full bg-black z-10 opacity-0 group-hover:opacity-40 pointer-events-none transition-opacity" />
         <a 
             class="absolute top-1/2 left-1/2 pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 transition transform -translate-x-1/2 -translate-y-1/2 z-20 hover:text-white text-2xl font-bold" 
@@ -49,6 +50,10 @@ const cldVideoPreview = getCldVideoUrl({
                 />
             )
         }
+    </div>
+
+    <div class="flex items-center gap-6">
+        <HeartLike client:load imgData={img} currentUser={currentUser} />
     </div>
 </div>
 
