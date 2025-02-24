@@ -84,4 +84,51 @@ export const server = {
             }
         }
     }),
+    toggleVisibility: defineAction({
+        input: z.object({
+            imageId: z.string(),
+        }),
+        handler: async ({ imageId }, context) => {
+            const currentUser = context.locals.user?.id;
+
+            if(!currentUser) {
+                throw new Error("No user found");
+            }
+
+            try {
+                const existingImage = await db.query.userImage.findFirst({
+                    where: and(
+                        eq(userImage.id, imageId),
+                        eq(userImage.userId, currentUser),
+                    ),
+                });
+
+                if(!existingImage) {
+                    return new Error("Image not found or not auth");
+                }
+
+                // Toggle visibility
+                const updatedImage = await db
+                    .update(userImage)
+                    .set({
+                        visibility: !existingImage.visibility,
+                    })
+                    .where(
+                        and(
+                            eq(userImage.id, imageId), 
+                            eq(userImage.userId, currentUser)
+                        ),
+                    )
+                    .returning();
+
+                    return {
+                        success: true,
+                        visibility: updatedImage[0].visibility,
+                    }
+            } catch (error) {
+                console.error("Toggle visibility error:", error);
+                throw new Error("Could not toggle visibility");
+            }
+        }
+    }),
 };

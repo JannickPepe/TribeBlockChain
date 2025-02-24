@@ -5,6 +5,7 @@ import type { TImagePost } from "../lib/infer-types";
 import { CldImage } from "astro-cloudinary";
 import { getCldVideoUrl, getCldImageUrl } from "astro-cloudinary/helpers";
 import HeartLike from "./HeartLike";
+import Visibility from "./Visibility";
 
 type Props = {
     currentUser: User | null;
@@ -52,8 +53,9 @@ const cldVideoPreview = getCldVideoUrl({
         }
     </div>
 
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-6 bg-neutral-800 rounded-bl-lg rounded-br-lg">
         <HeartLike client:load imgData={img} currentUser={currentUser} />
+        <Visibility imgData={img} currentUser={currentUser} client:load />
     </div>
 </div>
 
