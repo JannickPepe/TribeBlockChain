@@ -34,7 +34,7 @@ function HeartLike({ currentUser, imgData }: ImagePostProps) {
             if(data?.success) {
                 const updatedLikes = alreadyLiked
                     ? likes.filter((like) => like.userId !== currentUser.id)
-                    : [...likes, data.success];
+                    : [...likes, ...(typeof data.success === 'object' ? [data.success] : [])];
 
                 setLikes(updatedLikes);
                 console.log("Server update");

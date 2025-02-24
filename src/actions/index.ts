@@ -41,7 +41,8 @@ export const server = {
         handler: async ({ imageId }, context) => {
             const currentUser = context.locals.user?.id;
             if(!currentUser) {
-                throw new Error("No user found");
+                // Return a JSON error instead of throwing
+                return { success: false, error: "No user found" };
             }
 
             try {
@@ -78,7 +79,8 @@ export const server = {
                 }
             } catch (error) {
                 console.error("Like action error:", error)
-                throw new Error("Could not add like");
+                // Return a JSON error instead of throwing
+                return { success: false, error: "Could not add like" };
             }
         }
     }),
